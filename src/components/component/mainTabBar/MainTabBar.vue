@@ -1,7 +1,9 @@
 <template>
   <div>
   <TabBar>
-
+    <tab-bar-item path="/home">
+      <img src="@/assets/img/home/home.svg" >
+    </tab-bar-item>
   </TabBar>
   </div>
 
