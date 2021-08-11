@@ -1,7 +1,4 @@
 <template>
-<<<<<<< HEAD
-
-=======
   <div class="tb_item" @click="itemClick">
     <div v-if="!isActive">
       <slot name="item_img"></slot>
@@ -12,25 +9,16 @@
     <div :style="activeStyle">
       <slot name="item_text"></slot>
     </div>
-
->>>>>>> 5aa90f221b121dda8c01927b39d868e103b8e4ae
   </div>
 </template>
 
 <script>
 export default {
   name: "TabBarItem",
-<<<<<<< HEAD
-
-=======
->>>>>>> 5aa90f221b121dda8c01927b39d868e103b8e4ae
   props: {
     path: String,
     activeColor: {
       type: String,
-<<<<<<< HEAD
-      default: '#d4237a'
-=======
       default: 'blue',
     }
   },
@@ -47,7 +35,6 @@ export default {
       if (this.path !== this.$route.path) {
         this.$router.replace(this.path)
       }
->>>>>>> 5aa90f221b121dda8c01927b39d868e103b8e4ae
     }
   }
 }

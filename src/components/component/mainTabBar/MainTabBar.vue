@@ -1,8 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-
-=======
     <tab-bar>
       <TabBarItem path="/home">
         <template v-slot:item_img><img src="@/assets/img/home/home.svg" alt=""></template>
@@ -26,7 +23,6 @@
       </TabBarItem>
 
     </tab-bar>
->>>>>>> 5aa90f221b121dda8c01927b39d868e103b8e4ae
   </div>
 
 </template>
