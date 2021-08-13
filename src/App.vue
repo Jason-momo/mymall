@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <MainTabBar></MainTabBar>
   </div>
   <router-view/>
