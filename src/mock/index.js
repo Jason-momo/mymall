@@ -1,7 +1,8 @@
 import Mock from "mockjs"
-import {getInit} from "@/mock/home"
+import {getInitDate, getHomeMultiData} from "@/mock/home"
 
-Mock.mock('/user', 'get',getInit())
+Mock.mock('/init', 'get', getInitDate())
+Mock.mock('/home/multi', 'get', getHomeMultiData())
 
 
 //
