@@ -13,6 +13,7 @@
     <HomeRecommendView>
     </HomeRecommendView>
     <FeatureView></FeatureView>
+    <TabControl :titles="['流行','新款','精选']"></TabControl>
     <div class="test_view">
       占位显示
     </div>
@@ -23,6 +24,8 @@
 
 <script>
 import NavBar from "@/components/common/navbar/NavBar";
+import TabControl from "@/components/component/tabControl/TabControl";
+
 import HomeSwiper from "@/views/home/childComponent/HomeSwiper";
 import HomeRecommendView from "@/views/home/childComponent/HomeRecommendView";
 import FeatureView from "@/views/home/childComponent/FeatureView";
@@ -37,10 +40,14 @@ export default {
     // this.$store.dispatch('getHomeMultiData').then(res => {
     //   console.log(res.data);
     // })
+    this.getHomeGoods('pop');
+    this.getHomeGoods('new');
+    this.getHomeGoods('sell');
 
   },
   components: {
     NavBar,
+    TabControl,
     HomeSwiper,
     HomeRecommendView,
     FeatureView
@@ -48,7 +55,19 @@ export default {
   data() {
     return {
       // multiData: {}
-      banners: null
+      banners: null,
+      goods: {
+        'pop': {page: 0, list: []},
+        'news': {page: 0, list: []},
+        'sell': {page: 0, list: []},
+      }
+    }
+  },
+  methods: {
+    getHomeGoods(gtype) {
+      this.$store.dispatch('getHomeGoods', gtype).then(res => {
+
+      })
     }
   }
 
@@ -64,10 +83,12 @@ export default {
   background-color: var(--color-tint);
   color: #F6F6F6;
 }
-.home_swiper{
+
+.home_swiper {
   padding-top: 44px;
 }
+
 .test_view {
-  height: 500px;
+  height: 300px;
 }
 </style>

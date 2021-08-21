@@ -1,6 +1,9 @@
 import ajax from "@/api/ajax";
 
 const actions = {
+    async getHomeGoods(gtype) {
+        return await ajax('/goods', 'GET')
+    },
     async getInitDate() {
         return await ajax('/init', 'GET')
     },

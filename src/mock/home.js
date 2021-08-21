@@ -1,5 +1,16 @@
 import Mock from 'mockjs'
 
+export function getGoods(gType, page) {
+    if (gType === 'pop') {
+        return Mock.mock({
+            'list|30': {
+                'goodname': "@name",
+                'price': "@price",
+            }
+        })
+    }
+}
+
 export function getInitDate() {
     return Mock.mock({
         'user': {
@@ -9,11 +20,12 @@ export function getInitDate() {
         }
     })
 }
-export  function getBannerList(){
+
+export function getBannerList() {
     return Mock.mock({
-        "banner|4":{
-            "img":Mock.Random.image("300X200"),
-            "link":"xx"
+        "banner|4": {
+            "img": Mock.Random.image("300X200"),
+            "link": "xx"
         }
     })
 }
