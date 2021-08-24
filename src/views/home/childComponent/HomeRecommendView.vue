@@ -1,9 +1,9 @@
 <template>
   <div id="recommend">
-    <div class="recommend_item" v-for="i in 4">
-      <a href="#">
-        <img src="https://dummyimage.com/80X80" alt="" class="cimg">
-        <div>推荐信息</div>
+    <div class="recommend_item" v-for="r in recommends">
+      <a :href="r.link">
+        <img :src="r.img" alt="" class="cimg">
+        <div>{{ r.title }}</div>
       </a>
     </div>
   </div>
@@ -11,7 +11,13 @@
 
 <script>
 export default {
-  name: "HomeRecommendView"
+  name: "HomeRecommendView",
+  props: {
+    recommends: {
+      type: Array,
+      default: []
+    }
+  }
 }
 </script>
 
@@ -28,7 +34,6 @@ export default {
 
 #recommend .recommend_item {
   flex: 1;
-
 }
 
 #recommend .recommend_item img {

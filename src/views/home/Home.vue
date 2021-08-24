@@ -1,16 +1,13 @@
 <template>
   <div id="home">
-
     <NavBar class="home_nav">
       <template v-slot:nb_center>Home首页</template>
     </NavBar>
     <div class="home_swiper">
-      <HomeSwiper>
+      <HomeSwiper :banners="banners">
       </HomeSwiper>
     </div>
-
-
-    <HomeRecommendView>
+    <HomeRecommendView :recommends="recommends">
     </HomeRecommendView>
     <FeatureView></FeatureView>
     <TabControl :titles="['流行','新款','精选']"></TabControl>
@@ -35,13 +32,7 @@ import FeatureView from "@/views/home/childComponent/FeatureView";
 export default {
   name: "Home",
   created() {
-    //
-    // this.multiData = getHomeMultiData()
-    // this.banners = getBannerList();
-    // console.log(this.banners.banner.img)
-    // this.$store.dispatch('getHomeMultiData').then(res => {
-    //   console.log(res.data);
-    // })
+    this.getHomeMultidata();
     this.getHomeGoods();
     // this.getHomeGoods('new');
     // this.getHomeGoods('sell');
@@ -58,19 +49,27 @@ export default {
   data() {
     return {
       // multiData: {}
-      banners: null,
+      recommends:[],
+      banners: [],
       goods: {
         "pop": {page: 0, list: []},
         "news": {page: 0, list: []},
         "sell": {page: 0, list: []},
       },
-      pop:{
-        page:0,
-        list:[]
-      }
+
     }
   },
   methods: {
+    getHomeMultidata(){
+      this.$store.dispatch('getHomeBanners').then(res =>{
+        this.banners=res.data.banners;
+        // console.log(this.banners);
+      })
+      this.$store.dispatch('getHomeRecommend').then(res =>{
+        this.recommends=res.data.recommends;
+        // console.log(this.recommends);
+      })
+    },
     getHomeGoods() {
       this.$store.dispatch('getHomeGoods').then(res => {
 

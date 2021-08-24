@@ -1,8 +1,8 @@
 <template>
   <div>
     <Swiper>
-      <SwiperItem v-for="b in 5">
-        <a href="#"><img src="https://dummyimage.com/500X200" alt=""></a>
+      <SwiperItem v-for="banner in banners">
+        <a :href="banner.link"><img :src="banner.img" alt=""></a>
       </SwiperItem>
     </Swiper>
   </div>
@@ -17,6 +17,12 @@ export default {
   components: {
     Swiper,
     SwiperItem
+  },
+  props:{
+    banners:{
+      type:Array,
+      default:[]
+    }
   }
 }
 </script>
