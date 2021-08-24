@@ -1,14 +1,20 @@
 import Mock from 'mockjs'
 
-export function getGoods(gType, page) {
+//
+export function getGoods(gType, page = 1) {
+    let data = null
     if (gType === 'pop') {
-        return Mock.mock({
-            'list|30': {
-                'goodname': "@name",
-                'price': "@price",
-            }
+        data = Mock.mock({
+            "list|30": [{
+                'title': "@title",
+                'price|1-1000': 1,
+                'fav|1-1000': 1,
+                'img': Mock.Random.image('100X200'),
+            }]
         })
     }
+    // console.log(data)
+    return data;
 }
 
 export function getInitDate() {
