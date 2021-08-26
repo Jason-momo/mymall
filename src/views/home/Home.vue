@@ -10,7 +10,7 @@
     <HomeRecommendView :recommends="recommends">
     </HomeRecommendView>
     <FeatureView></FeatureView>
-    <TabControl :titles="['流行','新款','精选']"></TabControl>
+    <TabControl :titles="['流行','新款','精选']" @tabClick="tabClick"></TabControl>
     <GoodsList :goods="showGoods"></GoodsList>
     <div class="test_view">
       占位显示
@@ -49,24 +49,40 @@ export default {
   data() {
     return {
       // multiData: {}
-      recommends:[],
+      recommends: [],
       banners: [],
       goods: {
         "pop": {page: 0, list: []},
         "news": {page: 0, list: []},
         "sell": {page: 0, list: []},
       },
+      currentType: "pop",
 
     }
   },
   methods: {
-    getHomeMultidata(){
-      this.$store.dispatch('getHomeBanners').then(res =>{
-        this.banners=res.data.banners;
+    tabClick(index) {
+      console.log(index);
+      switch (index) {
+        case 0:
+          this.currentType = "pop";
+          break;
+        case 1:
+          this.currentType = "news";
+          break;
+        case 2:
+          this.currentType = "sell";
+          break;
+      }
+      console.log(this.currentType);
+    },
+    getHomeMultidata() {
+      this.$store.dispatch('getHomeBanners').then(res => {
+        this.banners = res.data.banners;
         // console.log(this.banners);
       })
-      this.$store.dispatch('getHomeRecommend').then(res =>{
-        this.recommends=res.data.recommends;
+      this.$store.dispatch('getHomeRecommend').then(res => {
+        this.recommends = res.data.recommends;
         // console.log(this.recommends);
       })
     },
