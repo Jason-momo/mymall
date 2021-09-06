@@ -33,7 +33,9 @@ export default {
   name: "Home",
   created() {
     this.getHomeMultidata();
-    this.getHomeGoods();
+    this.getHomeGoods("pop");
+    this.getHomeGoods("news");
+    this.getHomeGoods("sell");
     // this.getHomeGoods('new');
     // this.getHomeGoods('sell');
 
@@ -74,7 +76,7 @@ export default {
           this.currentType = "sell";
           break;
       }
-      console.log(this.currentType);
+      console.log(this.currentType,"haha");
     },
     getHomeMultidata() {
       this.$store.dispatch('getHomeBanners').then(res => {
@@ -86,10 +88,10 @@ export default {
         // console.log(this.recommends);
       })
     },
-    getHomeGoods() {
+    getHomeGoods(type) {
       this.$store.dispatch('getHomeGoods').then(res => {
 
-        this.goods["pop"].list.push(...res.data.list)
+        this.goods[type].list.push(...res.data.list)
         // console.log(this.goods.pop.list);
         // console.log(res.data.list);
       })
@@ -97,7 +99,7 @@ export default {
   },
   computed: {
     showGoods() {
-      return this.goods['pop'].list
+      return this.goods[this.currentType].list
     }
   }
 
